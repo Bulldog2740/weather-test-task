@@ -20,16 +20,19 @@ import java.io.File
 import java.io.FileOutputStream
 import java.nio.ByteBuffer
 
-class GifViewModel (
+class GifViewModel(
     private val repository: GifRepository,
 ) : ViewModel() {
 
-    var listCreated: MutableLiveData<PagingData<DataModel>> = MutableLiveData()
     var searchable = ""
     var isOnline = MutableLiveData<Boolean>()
 
+    val listGifs: SharedFlow<PagingData<DataModel>>
+        get() = _listGifsEmitter
+    var _listGifsEmitter = MutableSharedFlow<PagingData<DataModel>>(5,4)
+
     init {
-        init ()
+        init()
     }
 
     fun init(isOnline: Boolean = true) {
@@ -37,7 +40,7 @@ class GifViewModel (
             repository.getAllGifs(viewModelScope, isOnline) {
                 this@GifViewModel.isOnline.value = it
             }.flowOn(Dispatchers.IO).collectLatest {
-                listCreated.postValue(it)
+                _listGifsEmitter.emit(it)
             }
         }
     }
@@ -56,7 +59,7 @@ class GifViewModel (
                     init()
                 else
                     repository.getSearched(viewModelScope, it).collectLatest {
-                        listCreated.postValue(it)
+                        _listGifsEmitter.emit(it)
                     }
             }
         }
@@ -72,7 +75,7 @@ class GifViewModel (
             repository.deleteGif(data)
         }
         putSharedPref(data)
-        init (false)
+        init(false)
     }
 
     fun downloadGif(path: String, res: Drawable?, model: DataModel) {

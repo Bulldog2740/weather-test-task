@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.web.testtask.R
@@ -11,6 +13,8 @@ import com.web.testtask.data.model.DataModel
 import com.web.testtask.databinding.FragmentDetailsBinding
 import com.web.testtask.presentation.adapter.ViewPagerAdapter
 import com.web.testtask.core.basefragment.BaseFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details) {
     private val args: DetailsFragmentArgs by navArgs()
@@ -25,6 +29,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
             viewModel.downloadGif(dir, drawable, data)
         }
 
+        lifecycleScope.launch {
+            viewModel.listGifs.asLiveData().observe(viewLifecycleOwner) {
+                adapter.submitData(lifecycle, it)
+            }
+        }
         binding.delete.setOnClickListener {
             currentItem?.let { item ->
                 viewModel.deletenOne(
@@ -45,10 +54,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
 
         binding.viewPager.doOnPreDraw {
             binding.viewPager.setCurrentItem(position, false)
-        }
-
-        viewModel.listCreated.observe(viewLifecycleOwner) {
-            adapter.submitData(lifecycle, it)
         }
     }
 

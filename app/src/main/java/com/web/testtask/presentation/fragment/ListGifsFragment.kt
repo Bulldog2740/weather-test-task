@@ -24,9 +24,8 @@ class ListGifsFragment : BaseFragment<FragmentTrendBinding>(R.layout.fragment_tr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.listCreated.observe(viewLifecycleOwner) {
-            lifecycleScope.launch {
+        lifecycleScope.launch {
+        viewModel.listGifs.collect {
                 adapter.submitData(it)
                 binding.swipeRefresh.isRefreshing = false
             }
