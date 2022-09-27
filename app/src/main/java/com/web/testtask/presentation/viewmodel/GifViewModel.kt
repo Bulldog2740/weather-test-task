@@ -29,7 +29,7 @@ class GifViewModel(
 
     val listGifs: SharedFlow<PagingData<DataModel>>
         get() = _listGifsEmitter
-    var _listGifsEmitter = MutableSharedFlow<PagingData<DataModel>>(5,4)
+    var _listGifsEmitter = MutableSharedFlow<PagingData<DataModel>>(5, 4)
 
     init {
         init()

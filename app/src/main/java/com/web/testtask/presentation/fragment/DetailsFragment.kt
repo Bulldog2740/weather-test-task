@@ -30,7 +30,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
         }
 
         lifecycleScope.launch {
-            viewModel.listGifs.asLiveData().observe(viewLifecycleOwner) {
+            viewModel.listGifs.collect(){
                 adapter.submitData(lifecycle, it)
             }
         }
