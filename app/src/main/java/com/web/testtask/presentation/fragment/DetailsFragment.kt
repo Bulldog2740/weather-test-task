@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.web.testtask.R
+import com.web.testtask.core.basefragment.BaseFragment
 import com.web.testtask.data.model.DataModel
 import com.web.testtask.databinding.FragmentDetailsBinding
 import com.web.testtask.presentation.adapter.ViewPagerAdapter
-import com.web.testtask.core.basefragment.BaseFragment
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details) {

@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import com.web.testtask.R
+import com.web.testtask.core.basefragment.BaseFragment
 import com.web.testtask.databinding.FragmentTrendBinding
 import com.web.testtask.presentation.adapter.GifListAdapter
-import com.web.testtask.core.basefragment.BaseFragment
 import kotlinx.coroutines.launch
 
 class ListGifsFragment : BaseFragment<FragmentTrendBinding>(R.layout.fragment_trend) {
@@ -25,7 +25,7 @@ class ListGifsFragment : BaseFragment<FragmentTrendBinding>(R.layout.fragment_tr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-        viewModel.listGifs.collect {
+            viewModel.listGifs.collect {
                 adapter.submitData(it)
                 binding.swipeRefresh.isRefreshing = false
             }
