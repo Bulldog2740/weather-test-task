@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestTask</string>
+    <string name="failed">Failed to load</string>
+    <string name="offline">Offline mode</string>
+</resources>
