@@ -2,7 +2,6 @@ package com.web.testtask.di
 
 import androidx.annotation.Keep
 import com.web.testtask.AppDelegate
-import com.web.testtask.di.network.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext
@@ -25,11 +24,11 @@ object Koin {
         val modules = listOf<Module>(
             viewModelModule(),
             networkModule(),
-            repositoryModule()
+            dataBaseModule()
         )
 
         startKoin {
-            androidLogger(Level.NONE)
+           androidLogger(Level.NONE)
             androidContext(appDelegate)
             modules(modules)
         }

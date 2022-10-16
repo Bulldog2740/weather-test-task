@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.web.testtask.presentation.viewmodel.GifViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 abstract class BaseFragment<T : ViewDataBinding>(private val resId: Int) : Fragment() {
 
     protected lateinit var binding: T
-    protected val viewModel: GifViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

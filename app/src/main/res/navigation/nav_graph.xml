@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/gifsFragment">
+    app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.web.testtask.presentation.fragment.DetailsFragment"
         android:label="DetailsFragment" >
         <argument
-            android:name="page"
-            app:argType="integer" />
+            android:name="city"
+            app:argType="com.web.testtask.data.model.CityModel"/>
+
     </fragment>
     <fragment
-        android:id="@+id/gifsFragment"
-        android:name="com.web.testtask.presentation.fragment.ListGifsFragment"
-        android:label="ListGifsFragment" >
+        android:id="@+id/mainFragment"
+        android:name="com.web.testtask.presentation.fragment.MainFragment"
+        android:label="MainFragment" >
         <action
-            android:id="@+id/firstToSecond"
+            android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

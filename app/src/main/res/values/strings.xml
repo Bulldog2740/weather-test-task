@@ -2,4 +2,7 @@
     <string name="app_name">TestTask</string>
     <string name="failed">Failed to load</string>
     <string name="offline">Offline mode</string>
+    <string name="celsius">\u00B0C</string>
+    <string name="api_key">AIzaSyA9dtsQcV6eBIIHeREgBxHl-WzPlNPHris</string>
+    <string name="no_internet_connection">No internet connection</string>
 </resources>

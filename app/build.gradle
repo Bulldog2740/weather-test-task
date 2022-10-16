@@ -17,7 +17,6 @@ android {
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -25,13 +24,14 @@ android {
         debug {
             testCoverageEnabled = false
             ext.alwaysUpdateBuildId = false
-            // Application DEBUG config fields
-            buildConfigField "String", "API_KEY", "\"XMWNZ8krf9qPAH2SOoOK6AY0g5Twa9uG\""
+            buildConfigField "String", "API_KEY", "\"51e4f66a92ff0448851ce7d70a02c783\""
+            buildConfigField "String", "GOOGLE_KEY", "\"AIzaSyA9dtsQcV6eBIIHeREgBxHl-WzPlNPHris\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"XMWNZ8krf9qPAH2SOoOK6AY0g5Twa9uG\""
+            buildConfigField "String", "API_KEY", "\"51e4f66a92ff0448851ce7d70a02c783\""
+            buildConfigField "String", "GOOGLE_KEY", "\"AIzaSyA9dtsQcV6eBIIHeREgBxHl-WzPlNPHris\""
 
         }
     }
@@ -48,27 +48,27 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.databinding:databinding-runtime:7.3.0'
-
     //DI
-    def koinVer = "2.2.2"
-    api "org.koin:koin-core:$koinVer"
-// or Koin for Lifecycle scoping
-    api "org.koin:koin-androidx-scope:$koinVer"
-// or Koin for Android Architecture ViewModel
-    api "org.koin:koin-androidx-viewmodel:$koinVer"
-    testImplementation "org.koin:koin-test:$koinVer"
-    androidTestImplementation "org.koin:koin-test:$koinVer"
+    def koinVer = "3.2.0"
+    implementation "io.insert-koin:koin-android:3.2.0-beta-1"
+    implementation "io.insert-koin:koin-core:$koinVer"
+    testImplementation "io.insert-koin:koin-test:$koinVer"
+    implementation "io.insert-koin:koin-androidx-navigation:$koinVer"
+    androidTestImplementation "io.insert-koin:koin-test:$koinVer"
 
     //REST API
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
     api 'com.google.code.gson:gson:2.9.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.9.0'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     testImplementation 'junit:junit:4.13.2'
@@ -84,8 +84,7 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.1.0-beta01"
     //Timber logger
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+
     def nav_version = "2.5.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -101,4 +100,7 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
     implementation "androidx.room:room-paging:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
+
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 }

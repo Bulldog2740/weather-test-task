@@ -2,65 +2,56 @@ package com.web.testtask.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.doOnPreDraw
-import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.web.testtask.R
 import com.web.testtask.core.basefragment.BaseFragment
-import com.web.testtask.data.model.DataModel
 import com.web.testtask.databinding.FragmentDetailsBinding
-import com.web.testtask.presentation.adapter.ViewPagerAdapter
-import kotlinx.coroutines.launch
+import com.web.testtask.presentation.viewmodel.DetailsViewModel
+import com.web.testtask.util.NetworkResult
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details) {
+class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details),
+    OnMapReadyCallback {
+    private val viewModel: DetailsViewModel by viewModel()
+
     private val args: DetailsFragmentArgs by navArgs()
-    private var currentItem: DataModel? = null
+    private val city by lazy {
+        args.city
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val position = savedInstanceState?.getInt(KEY_POSITION) ?: args.page
-
-        val adapter = ViewPagerAdapter { dir, drawable, data ->
-            currentItem = data
-            viewModel.downloadGif(dir, drawable, data)
+        val map = childFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        map.getMapAsync(this)
+        viewModel.getWeather(city.coord)
+        viewModel.weatherResponse.observe(viewLifecycleOwner) { response ->
+            binding.response = response
+            if (response is NetworkResult.Success)
+                binding.weather = response.data
         }
 
-        lifecycleScope.launch {
-            viewModel.listGifs.collect(){
-                adapter.submitData(lifecycle, it)
-            }
-        }
-        binding.delete.setOnClickListener {
-            currentItem?.let { item ->
-                viewModel.deletenOne(
-                    requireContext().cacheDir.absolutePath,
-                    item
-                )
-            }
-        }
-
-        binding.arrowBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
-        binding.viewPager.adapter = adapter
-        viewModel.isOnline.observe(viewLifecycleOwner) {
-            binding.delete.isVisible = !it
-        }
-
-        binding.viewPager.doOnPreDraw {
-            binding.viewPager.setCurrentItem(position, false)
-        }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(KEY_POSITION, binding.viewPager.currentItem)
-    }
+    override fun onMapReady(googleMap: GoogleMap) {
+        val latLng = LatLng(city.coord.lat, city.coord.lon)
+        val marker =
+            MarkerOptions().position(
+                latLng
+            )
 
-    companion object {
-        private const val KEY_POSITION = "position"
+        googleMap.moveCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                latLng,
+                10f
+            )
+        )
+        googleMap.addMarker(marker)
     }
 }
