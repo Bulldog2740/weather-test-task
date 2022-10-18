@@ -11,7 +11,7 @@ class SearchedCitiesPagingSource(private val text: String,private val userPostDa
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CityModel> =
         withContext(Dispatchers.IO) {
-            val randomPosts = userPostDao.getSearchedCities(text)
+            val randomPosts = userPostDao.getCitiesByFilter(text)
             randomPosts.load(params)
         }
 

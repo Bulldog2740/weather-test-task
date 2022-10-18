@@ -1,6 +1,5 @@
 package com.web.testtask.data.model
 
-
 import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -17,5 +16,5 @@ data class CityModel(
     val state: String,
     val country: String,
     @Embedded
-val coord: Coord = Coord(0.0, 0.0)
+val coord: CoordinateModel = CoordinateModel(0.0, 0.0)
 ) : Parcelable

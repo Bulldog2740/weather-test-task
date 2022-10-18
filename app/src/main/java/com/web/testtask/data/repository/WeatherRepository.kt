@@ -7,44 +7,45 @@ import androidx.paging.PagingData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.web.testtask.data.dao.WeatherDao
-import com.web.testtask.data.database.AppDatabase
 import com.web.testtask.data.model.CityModel
 import com.web.testtask.presentation.viewmodel.SearchedCitiesPagingSource
 import com.web.testtask.remote.WeatherService
 import com.web.testtask.util.BaseApiResponse
+import com.web.testtask.util.oneTimeCoroutineScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import org.koin.android.ext.koin.androidContext
 
 class WeatherRepository constructor(
     private val weatherService: WeatherService,
     private val dao: WeatherDao,
-    private val context:Context
+    private val context:Context,
+    private val ioDispatcher: CoroutineDispatcher
 ) : BaseApiResponse() {
 
-    fun readJSONFromAssets() =
+    private fun readJSONFromAssets() =
         context.assets
             ?.open("city_list.json")
             ?.reader()
 
-    suspend fun prePopulateDatabase(climbingRouteDao: WeatherDao) {
+    private suspend fun prePopulateDatabase(climbingRouteDao: WeatherDao) {
         val listType = object : TypeToken<List<CityModel>>() {}.type
         val city = Gson().fromJson<List<CityModel>>(readJSONFromAssets(), listType)
-        climbingRouteDao.insert(city)
+        climbingRouteDao.insertAll(city)
     }
     init {
-        CoroutineScope(Dispatchers.IO).launch {
+        oneTimeCoroutineScope(ioDispatcher).launch {
             prePopulateDatabase(dao)
         }
     }
 
     suspend fun getWeather(lon: Double, lat: Double) = flow {
         emit(safeApiCall { weatherService.fetchWeather(lon, lat) })
-    }.flowOn(Dispatchers.IO)
+    }.flowOn(ioDispatcher)
 
 
     fun getAllCities(): Flow<PagingData<CityModel>> {
@@ -52,12 +53,12 @@ class WeatherRepository constructor(
             config = PagingConfig(
                 pageSize = 10,
             ),
-            pagingSourceFactory = { dao.getCities() }
+            pagingSourceFactory = { dao.getAllCities() }
         ).flow
     }
 
     fun getSearchedCities(newText: String) =
         Pager(PagingConfig(20)) { SearchedCitiesPagingSource(newText, dao) }
             .flow
-            .flowOn(Dispatchers.IO)
+            .flowOn(ioDispatcher)
 }

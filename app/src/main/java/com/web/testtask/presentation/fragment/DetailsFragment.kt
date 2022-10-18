@@ -40,7 +40,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val latLng = LatLng(city.coord.lat, city.coord.lon)
+        val latLng = LatLng(city.coord.latitude, city.coord.longitude)
         val marker =
             MarkerOptions().position(
                 latLng

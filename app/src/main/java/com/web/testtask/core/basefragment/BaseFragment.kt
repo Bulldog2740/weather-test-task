@@ -22,7 +22,6 @@ abstract class BaseFragment<T : ViewDataBinding>(private val resId: Int) : Fragm
         )
 
         binding.lifecycleOwner = this
-
         return binding.root
     }
 

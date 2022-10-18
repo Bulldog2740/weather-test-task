@@ -5,9 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="@string/api_key" />
 
     <application
         android:name=".AppDelegate"
@@ -17,6 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestTask">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"

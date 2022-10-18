@@ -1,8 +1,5 @@
 package com.web.testtask.data.model
 
-
-import com.google.gson.annotations.SerializedName
-
 data class WeatherX(
     val description: String,
     val icon: String,
