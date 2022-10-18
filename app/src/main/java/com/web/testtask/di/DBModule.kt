@@ -8,11 +8,12 @@ import org.koin.dsl.module
 
 fun dataBaseModule() = module {
 
-    factory { WeatherRepository(get(),get()) }
+    factory { WeatherRepository(get(), get(),get()) }
     single {
         Room.databaseBuilder(
             androidContext().applicationContext, AppDatabase::class.java, "db"
         ).build()
     }
-         single { get<AppDatabase>().weatherDao }
+    single { get<AppDatabase>().weatherDao }
+
 }
