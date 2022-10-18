@@ -1,5 +1,6 @@
-package com.web.testtask.util
+package com.web.testtask.core.api
 
+import com.web.testtask.remote.NetworkResult
 import retrofit2.Response
 
 abstract class BaseApiResponse {

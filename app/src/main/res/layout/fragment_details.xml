@@ -10,11 +10,11 @@
 
         <variable
             name="response"
-            type="NetworkResult&lt;Weather>" />
+            type="com.web.testtask.remote.NetworkResult" />
 
         <import type="com.web.testtask.data.model.Weather" />
 
-        <import type="com.web.testtask.util.NetworkResult" />
+        <import type="com.web.testtask.remote.NetworkResult" />
 
         <import type="android.view.View" />
 

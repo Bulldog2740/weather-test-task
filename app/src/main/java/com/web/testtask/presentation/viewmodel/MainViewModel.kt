@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.web.testtask.core.CoroutineViewModel
 import com.web.testtask.data.model.CityModel
 import com.web.testtask.data.repository.WeatherRepository
 import kotlinx.coroutines.CoroutineScope

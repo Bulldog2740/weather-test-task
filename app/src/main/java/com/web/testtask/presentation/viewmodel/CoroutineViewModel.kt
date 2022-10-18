@@ -1,4 +1,4 @@
-package com.web.testtask.core
+package com.web.testtask.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

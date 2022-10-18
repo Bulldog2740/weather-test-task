@@ -1,4 +1,4 @@
-package com.web.testtask.util
+package com.web.testtask.core.listener
 
 import android.widget.SearchView
 

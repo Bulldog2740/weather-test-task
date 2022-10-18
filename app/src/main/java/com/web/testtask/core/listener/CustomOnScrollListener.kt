@@ -1,4 +1,4 @@
-package com.web.testtask.util
+package com.web.testtask.core.listener
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

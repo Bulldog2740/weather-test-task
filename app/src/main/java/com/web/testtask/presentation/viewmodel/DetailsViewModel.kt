@@ -3,11 +3,10 @@ package com.web.testtask.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.web.testtask.core.CoroutineViewModel
 import com.web.testtask.data.model.CoordinateModel
 import com.web.testtask.data.model.Weather
 import com.web.testtask.data.repository.WeatherRepository
-import com.web.testtask.util.NetworkResult
+import com.web.testtask.remote.NetworkResult
 import kotlinx.coroutines.launch
 
 class DetailsViewModel constructor(
