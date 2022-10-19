@@ -1,4 +1,4 @@
-package com.web.testtask.remote
+package com.web.testtask.domain.remote
 
 import androidx.annotation.Keep
 import com.web.testtask.data.model.Weather

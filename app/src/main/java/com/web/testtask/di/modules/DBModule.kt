@@ -6,6 +6,7 @@ import com.web.testtask.data.repository.WeatherRepositoryImpl
 import com.web.testtask.di.AppDispatchersImpl
 import com.web.testtask.domain.repository.WeatherRepository
 import com.web.testtask.domain.AppDispatchers
+import com.web.testtask.util.DB_NAME
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -14,7 +15,7 @@ fun dataBaseModule() = module {
     factory <WeatherRepository> {WeatherRepositoryImpl(get(), get(),get(),get())  }
     single {
         Room.databaseBuilder(
-            androidContext().applicationContext, AppDatabase::class.java, "db"
+            androidContext().applicationContext, AppDatabase::class.java, DB_NAME
         ).build()
     }
     single { get<AppDatabase>().weatherDao }

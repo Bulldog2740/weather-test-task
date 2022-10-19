@@ -13,7 +13,7 @@ import com.web.testtask.R
 import com.web.testtask.core.basefragment.BaseFragment
 import com.web.testtask.databinding.FragmentDetailsBinding
 import com.web.testtask.presentation.viewmodel.DetailsViewModel
-import com.web.testtask.remote.NetworkResult
+import com.web.testtask.domain.remote.NetworkResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_details),

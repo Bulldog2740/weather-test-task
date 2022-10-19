@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.databinding.ktx.BuildConfig
 import com.web.testtask.di.network.AppGsonConvertorFactory
 import com.web.testtask.di.network.MiddlewareInterceptor
-import com.web.testtask.remote.WeatherService
+import com.web.testtask.domain.remote.WeatherService
 import com.web.testtask.util.BASE_API_LINK
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

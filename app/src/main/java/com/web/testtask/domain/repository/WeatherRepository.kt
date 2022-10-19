@@ -6,8 +6,8 @@ import com.web.testtask.data.dao.WeatherDao
 import com.web.testtask.data.model.CityModel
 import com.web.testtask.data.model.Weather
 import com.web.testtask.domain.AppDispatchers
-import com.web.testtask.remote.NetworkResult
-import com.web.testtask.remote.WeatherService
+import com.web.testtask.domain.remote.NetworkResult
+import com.web.testtask.domain.remote.WeatherService
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {

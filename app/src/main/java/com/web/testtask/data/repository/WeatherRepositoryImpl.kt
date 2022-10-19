@@ -12,7 +12,7 @@ import com.web.testtask.data.dao.WeatherDao
 import com.web.testtask.data.model.CityModel
 import com.web.testtask.domain.AppDispatchers
 import com.web.testtask.domain.repository.WeatherRepository
-import com.web.testtask.remote.WeatherService
+import com.web.testtask.domain.remote.WeatherService
 import com.web.testtask.util.oneTimeCoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

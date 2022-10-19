@@ -1,4 +1,4 @@
-package com.web.testtask.remote
+package com.web.testtask.domain.remote
 
 sealed class NetworkResult<T>(
     val data: T? = null,
