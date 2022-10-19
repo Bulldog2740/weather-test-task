@@ -1,4 +1,4 @@
-package com.web.testtask.presentation.viewmodel
+package com.web.testtask.core
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

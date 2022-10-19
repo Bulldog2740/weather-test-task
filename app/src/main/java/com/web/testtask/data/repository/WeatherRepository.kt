@@ -10,7 +10,7 @@ import com.web.testtask.di.AppDispatchers
 import com.web.testtask.core.api.BaseApiResponse
 import com.web.testtask.data.dao.WeatherDao
 import com.web.testtask.data.model.CityModel
-import com.web.testtask.presentation.viewmodel.SearchedCitiesPagingSource
+import com.web.testtask.core.SearchedCitiesPagingSource
 import com.web.testtask.remote.WeatherService
 import com.web.testtask.util.oneTimeCoroutineScope
 import kotlinx.coroutines.flow.Flow

@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 class MainViewModel constructor(
     private val repository: WeatherRepository,
 ) : CoroutineViewModel() {
+
     private var lastSearch = ""
 
     val getAllCities = repository.getAllCities()
