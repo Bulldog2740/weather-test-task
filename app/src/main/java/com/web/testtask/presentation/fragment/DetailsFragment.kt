@@ -21,30 +21,27 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fragment_d
     private val viewModel: DetailsViewModel by viewModel()
 
     private val args: DetailsFragmentArgs by navArgs()
-    private val city by lazy {
-        args.city
-    }
+    private val city by lazy { args.city }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val map = childFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+        val map = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         map.getMapAsync(this)
+        initObserver()
+    }
+
+    private fun initObserver() {
         viewModel.getWeather(city.coord)
         viewModel.weatherResponse.observe(viewLifecycleOwner) { response ->
             binding.response = response
             if (response is NetworkResult.Success)
                 binding.weather = response.data
         }
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         val latLng = LatLng(city.coord.latitude, city.coord.longitude)
-        val marker =
-            MarkerOptions().position(
-                latLng
-            )
+        val marker = MarkerOptions().position(latLng)
 
         googleMap.moveCamera(
             CameraUpdateFactory.newLatLngZoom(

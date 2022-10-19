@@ -3,7 +3,6 @@ package com.web.testtask.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.web.testtask.R
-import com.web.testtask.data.repository.WeatherRepository
 
 class MainActivity : AppCompatActivity() {
 

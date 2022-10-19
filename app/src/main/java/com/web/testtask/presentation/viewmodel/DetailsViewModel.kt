@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.web.testtask.data.model.CoordinateModel
 import com.web.testtask.data.model.Weather
-import com.web.testtask.data.repository.WeatherRepository
+import com.web.testtask.domain.repository.WeatherRepository
 import com.web.testtask.remote.NetworkResult
 import kotlinx.coroutines.launch
 

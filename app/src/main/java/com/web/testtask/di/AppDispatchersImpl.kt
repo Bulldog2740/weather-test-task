@@ -1,5 +1,6 @@
 package com.web.testtask.di
 
+import com.web.testtask.domain.AppDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 

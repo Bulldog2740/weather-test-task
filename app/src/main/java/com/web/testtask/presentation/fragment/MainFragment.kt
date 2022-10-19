@@ -27,24 +27,25 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         binding.searchView.setOnQueryTextListener(CustomQueryTextListener { newText ->
             viewModel.getCities(newText)
         })
+        initObserver()
+        adapter.addLoadStateListener {
+            if ((it.refresh is LoadState.NotLoading) && adapter.itemCount != 0)
+                binding.progressBar.visibility = View.GONE
+        }
+    }
 
+    private fun initObserver() {
         lifecycleScope.launch {
             viewModel.getAllCities.collectLatest {
                 adapter.submitData(it)
             }
         }
-
         viewModel.ld.observe(viewLifecycleOwner) {
             lifecycleScope.launch {
                 adapter.submitData(PagingData.empty())
                 binding.recyclerView.scrollToPosition(0)
                 adapter.submitData(it)
             }
-        }
-
-        adapter.addLoadStateListener {
-            if ((it.refresh is LoadState.NotLoading) && adapter.itemCount != 0)
-                binding.progressBar.visibility = View.GONE
         }
     }
 

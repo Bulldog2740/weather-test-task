@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="8dp"
-        tools:background="@color/black_theme">
+        tools:background="@color/black">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -26,15 +26,15 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image"
+                setImage="@{position}"
                 android:layout_width="114dp"
-                android:layout_height="64dp"
-                setImage="@{position}"/>
+                android:layout_height="64dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="16dp"
                 android:text="@{name}"
                 android:textColor="@color/white"
                 android:textSize="15sp" />

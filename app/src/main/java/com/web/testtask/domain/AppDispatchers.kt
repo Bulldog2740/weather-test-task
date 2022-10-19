@@ -1,4 +1,4 @@
-package com.web.testtask.di
+package com.web.testtask.domain
 
 import kotlinx.coroutines.CoroutineDispatcher
 
