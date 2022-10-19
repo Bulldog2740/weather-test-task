@@ -1,4 +1,4 @@
-package com.web.testtask.presentation.viewmodel
+package com.web.testtask.presentation.fragments.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import com.web.testtask.data.model.CoordinateModel
 import com.web.testtask.data.model.Weather
 import com.web.testtask.domain.repository.WeatherRepository
 import com.web.testtask.domain.remote.NetworkResult
+import com.web.testtask.presentation.viewmodel.CoroutineViewModel
 import kotlinx.coroutines.launch
 
 class DetailsViewModel constructor(

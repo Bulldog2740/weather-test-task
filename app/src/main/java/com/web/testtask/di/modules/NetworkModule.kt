@@ -1,4 +1,4 @@
-package com.web.testtask.di
+package com.web.testtask.di.modules
 
 import android.content.Context
 import androidx.databinding.ktx.BuildConfig

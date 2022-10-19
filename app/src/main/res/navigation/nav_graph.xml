@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.web.testtask.presentation.fragment.DetailsFragment"
+        android:name="com.web.testtask.presentation.fragments.details.DetailsFragment"
         android:label="DetailsFragment" >
         <argument
             android:name="city"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.web.testtask.presentation.fragment.MainFragment"
+        android:name="com.web.testtask.presentation.fragments.main.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"

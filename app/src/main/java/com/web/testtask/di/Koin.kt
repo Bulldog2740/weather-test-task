@@ -3,6 +3,8 @@ package com.web.testtask.di
 import androidx.annotation.Keep
 import com.web.testtask.AppDelegate
 import com.web.testtask.di.modules.dataBaseModule
+import com.web.testtask.di.modules.networkModule
+import com.web.testtask.di.modules.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext

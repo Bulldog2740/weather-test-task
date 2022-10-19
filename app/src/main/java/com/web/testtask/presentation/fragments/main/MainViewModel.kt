@@ -1,4 +1,4 @@
-package com.web.testtask.presentation.viewmodel
+package com.web.testtask.presentation.fragments.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.web.testtask.data.model.CityModel
 import com.web.testtask.domain.repository.WeatherRepository
+import com.web.testtask.presentation.viewmodel.CoroutineViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

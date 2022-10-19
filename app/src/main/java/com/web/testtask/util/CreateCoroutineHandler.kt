@@ -11,7 +11,10 @@ inline fun createCoroutineHandler(crossinline onError: (Throwable?) -> Unit) =
         onError(throwable)
     }
 
-fun oneTimeCoroutineScope(context: CoroutineContext = Dispatchers.Main.immediate, init: CoroutineScope.() -> Unit): CoroutineScope {
+fun oneTimeCoroutineScope(
+    context: CoroutineContext = Dispatchers.Main.immediate,
+    init: CoroutineScope.() -> Unit
+): CoroutineScope {
     return CoroutineScope(context + Job()).apply(init)
 }
 

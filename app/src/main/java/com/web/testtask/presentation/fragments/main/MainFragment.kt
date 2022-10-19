@@ -1,4 +1,4 @@
-package com.web.testtask.presentation.fragment
+package com.web.testtask.presentation.fragments.main
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,6 @@ import com.web.testtask.R
 import com.web.testtask.core.basefragment.BaseFragment
 import com.web.testtask.databinding.FragmentMainBinding
 import com.web.testtask.presentation.adapter.CitiesPagingDataAdapter
-import com.web.testtask.presentation.viewmodel.MainViewModel
 import com.web.testtask.core.listener.CustomQueryTextListener
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

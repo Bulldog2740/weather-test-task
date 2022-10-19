@@ -1,4 +1,4 @@
-package com.web.testtask.presentation.fragment
+package com.web.testtask.presentation.fragments.details
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.web.testtask.R
 import com.web.testtask.core.basefragment.BaseFragment
 import com.web.testtask.databinding.FragmentDetailsBinding
-import com.web.testtask.presentation.viewmodel.DetailsViewModel
 import com.web.testtask.domain.remote.NetworkResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

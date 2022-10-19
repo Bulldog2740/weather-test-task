@@ -11,8 +11,8 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 fun dataBaseModule() = module {
-    single<AppDispatchers>{ AppDispatchersImpl() }
-    factory <WeatherRepository> {WeatherRepositoryImpl(get(), get(),get(),get())  }
+    single<AppDispatchers> { AppDispatchersImpl() }
+    factory<WeatherRepository> { WeatherRepositoryImpl(get(), get(), get(), get()) }
     single {
         Room.databaseBuilder(
             androidContext().applicationContext, AppDatabase::class.java, DB_NAME
