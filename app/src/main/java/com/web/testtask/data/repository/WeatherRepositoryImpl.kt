@@ -20,10 +20,10 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class WeatherRepositoryImpl constructor(
-    override val weatherService: WeatherService,
-    override val dao: WeatherDao,
-    override val context: Context,
-    override val ioDispatcher: AppDispatchers
+    private val weatherService: WeatherService,
+    private val dao: WeatherDao,
+    private val context: Context,
+    private val ioDispatcher: AppDispatchers
 ) : BaseApiResponse(), WeatherRepository {
 
     private fun readJSONFromAssets() =
